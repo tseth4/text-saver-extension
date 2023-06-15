@@ -1,27 +1,34 @@
 function highlightHandler(e) {
   var selection = document.getSelection();
-  let selectedText = selection.toString();
+  // let selectedText = selection.toString();
   if (selection !== '') {
-    console.log("className: ", selection.anchorNode);
-    // let temp_el = document.createElement("div");
-    // temp_el.innerHTML = "Hello World!";
-    // selection.anchorNode.appendChild(temp_el);
     selectionHelper(selection);
   }
 }
 
 function selectionHelper(selection) {
-  console.log("selection: ", selection);
-  selection.focusNode.parentNode.innerHTML = "HEllo World!";
+  console.log("Selection: ", selection);
+  console.log("Selection tostring: ", selection.toString());
   let activeElement = document.activeElement;
   var start = selection.anchorOffset;
   var end = selection.focusOffset;
-  if (start >= 0 && end >= 0) {
-    let basenodedata = selection.baseNode.data;
-    console.log(start, end);
-    console.log("mystr: ", basenodedata);
-    console.log("activeEl: ", activeElement);
-    console.log("offset: ", basenodedata.substring(start, end))
+  if (start >= 0 && end >= 0 && selection.baseNode) {
+    let base_node = selection.baseNode;
+    let base_node_data = selection.baseNode.data;
+    // console.log(start, end);
+    // console.log("mystr: ", base_node_data);
+    // console.log("activeEl: ", activeElement);
+    // console.log("offset: ", base_node_data.substring(start, end));
+    // console.log("url: ", base_node.baseURI);
+    if(chrome.runtime.id == undefined) return;
+
+    if (chrome.runtime?.id) {
+      chrome.runtime.sendMessage({
+        content: selection.toString(),
+        url: base_node.baseURI
+      })
+    }
+
   }
 }
 

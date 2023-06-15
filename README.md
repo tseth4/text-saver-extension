@@ -4,3 +4,10 @@ Extensions can monitor browser events in the background using the extension's se
 
 Start by registering the service worker in the manifest.json file:
 
+
+Highlight
+Sendn highlight popup
+Popup verifies and saves
+Options page shows saved quotes and urls
+Options page allow for export
+

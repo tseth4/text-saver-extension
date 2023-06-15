@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* border: 2px solid pink; */
+  height: fit-content;
+  height: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid red; */
+  height: auto;
+  /* height: fit-content; */
+  justify-content: center;
+  gap: 25px;
+  margin: 15px;
+}
+
+.container > * {
+  /* border: 2px solid blue; */
+}
+
+.content_title {
+  font-weight: bold;
+}
+
+.button_container {
+
+}
+
+button {
+  /* width: 300px; */
+  padding: 7px 25px;
+}
