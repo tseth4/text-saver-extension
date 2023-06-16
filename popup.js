@@ -15,20 +15,22 @@ chrome.storage.local.get("highlighted", (res) => {
   }
 });
 
-save_element.addEventListener("click", (e) => {
+save_element.addEventListener("click", async (e) => {
   chrome.tabs.query({ active: true }, (tabs) => {
-    chrome.storage.local.get("highlighted", (res) => {
-      console.log("getting: ", res)
-      if (res.highlighted.content) {
-        if (res.saved) {
-          chrome.storage.local.set({ "saved": [...res.saved, { content: content, url: url }] });
-        } else {
-          chrome.storage.local.set({ "saved": [{ content: content, url: url }] });
+    chrome.storage.local.get("highlighted", (highlighted_res) => {
+      chrome.storage.local.get("saved", (saved_res) => {
+        if (highlighted_res.highlighted) {
+          if (saved_res.saved) {
+            chrome.storage.local.set({ "saved": [...saved_res.saved, { content: content, url: url }] });
+          } else {
+            chrome.storage.local.set({ "saved": [{ content: content, url: url }] });
 
+          }
         }
-      }
+      });
     });
   });
+  // incrememntIndex
 });
 
 document.querySelector("#go-to-options").addEventListener("click", function () {
@@ -39,5 +41,3 @@ document.querySelector("#go-to-options").addEventListener("click", function () {
   }
 });
 
-
-// console.log("pop up")

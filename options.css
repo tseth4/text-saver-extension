@@ -1,0 +1,50 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Source Code Pro', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.options_container {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  min-height: 50vh;
+  margin-top: 15px;
+  padding: 35px;
+}
+
+.options_content__item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  word-wrap: break-word;
+  padding: 10px 0;
+}
+
+.options_content__item:not(:first-child) {
+  border-top: 1px solid rgba(17, 0, 255, 0.287);
+}
+
+.options_content__item_url {
+  font-size: 10px;
+}
+
+.options_content__item_text {
+  font-size: 14px;
+}
+
+.options_content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.options_clear_button {
+  width: 75px;
+}
