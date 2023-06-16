@@ -1,20 +1,26 @@
 let clear_button_element = document.querySelector(".options_clear_button");
+let refresh_button_element = document.querySelector(".options_refresh_button");
 clear_button_element.addEventListener("click", clearStorage);
+refresh_button_element.addEventListener("click", () => {
+  window.location.reload();
+})
 
-chrome.storage.onChanged.addListener(function (changes, namespace) {
-  let contentList = document.querySelector(".options_content");
-  if (changes.saved) {
-    changes.saved.newValue.forEach((e, i) => {
-      let newNode = createContentElement(i, e.content, e.url)
-      contentList.appendChild(newNode);
-    })
-  }
-});
+// chrome.storage.onChanged.addListener(function (changes, namespace) {
+//   let contentList = document.querySelector(".options_content");
+//   if (changes.saved) {
+//     changes.saved.newValue.forEach((e, i) => {
+//       console.log("onchange saving")
+//       let newNode = createContentElement(i, e.content, e.url)
+//       contentList.appendChild(newNode);
+//     })
+//   }
+// });
 
 chrome.storage.local.get("saved", (res) => {
   let contentList = document.querySelector(".options_content");
   if (res.saved) {
     res.saved.forEach((e, i) => {
+      console.log("storage get saving")
       let newNode = createContentElement(i, e.content, e.url)
       contentList.appendChild(newNode);
     })

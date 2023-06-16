@@ -12,6 +12,7 @@ body {
   height: auto;
   font-family: 'Montserrat', sans-serif;
   font-family: 'Source Code Pro', monospace;
+  width: 300px;
 }
 
 .container {

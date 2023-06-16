@@ -11,7 +11,7 @@ function selectionHelper(selection) {
   var end = selection.focusOffset;
   if (start >= 0 && end >= 0 && selection.baseNode) {
     let base_node = selection.baseNode;
-    if(chrome.runtime.id == undefined) return;
+    if(chrome.runtime == undefined) return;
     if (chrome.runtime?.id) {
       chrome.runtime.sendMessage({
         content: selection.toString(),
