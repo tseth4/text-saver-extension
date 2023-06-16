@@ -23,5 +23,3 @@ function selectionHelper(selection) {
 }
 
 document.onmouseup = highlightHandler;
-
-console.log("from content");

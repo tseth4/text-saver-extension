@@ -1,11 +1,9 @@
-console.log("options!!");
 let clear_button_element = document.querySelector(".options_clear_button");
 clear_button_element.addEventListener("click", clearStorage);
 
 chrome.storage.onChanged.addListener(function (changes, namespace) {
   let contentList = document.querySelector(".options_content");
   if (changes.saved) {
-    // console.log("changes: ", changes)
     changes.saved.newValue.forEach((e, i) => {
       let newNode = createContentElement(i, e.content, e.url)
       contentList.appendChild(newNode);
@@ -14,7 +12,6 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
 });
 
 chrome.storage.local.get("saved", (res) => {
-  // console.log("res: ", res)
   let contentList = document.querySelector(".options_content");
   if (res.saved) {
     res.saved.forEach((e, i) => {
